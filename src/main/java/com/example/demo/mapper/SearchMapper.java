@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
@@ -23,11 +24,11 @@ public interface SearchMapper {
                           @Param("endL") String endL,
                           @Param("endR") String endR);
 
-//    @Delete({"<script>",
-//             "DELETE FROM employee WHERE id IN",
-//             "<foreach collection='ids' item='id' open='(' separator=',' close=')'>",
-//             "#{id}",
-//             "</foreach>",
-//             "</script>"})
-//    void deleteByIds(@Param("ids") List<Long> ids);
+    @Delete({"<script>",
+             "DELETE FROM employee WHERE id IN",
+             "<foreach collection='ids' item='id' open='(' separator=',' close=')'>",
+             "#{id}",
+             "</foreach>",
+             "</script>"})
+    void deleteByIds(@Param("ids") List<Long> ids);
 }
