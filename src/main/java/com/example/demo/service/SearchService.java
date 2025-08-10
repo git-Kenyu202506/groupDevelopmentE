@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.MergedAnnotations.Search;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.Staff;
 import com.example.demo.mapper.SearchMapper;
 
 @Service
@@ -14,7 +14,7 @@ public class SearchService {
     @Autowired
     private SearchMapper mapper;
 
-    public List<Search> search(Integer id, String name,
+    public List<Staff> search(Integer id, String name,
                                  Integer minAge, Integer maxAge,
                                  LocalDate startL, LocalDate startR,
                                  LocalDate endL, LocalDate endR) {
