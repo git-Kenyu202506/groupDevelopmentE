@@ -8,7 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectProvider;
-import org.springframework.core.annotation.MergedAnnotations.Search;
+
+import com.example.demo.entity.Staff;
 
 @Mapper
 public interface SearchMapper {
@@ -18,7 +19,7 @@ public interface SearchMapper {
         @Result(property = "startDate", column = "start_date"),
         @Result(property = "endDate", column = "end_date")
     })
-    List<Search> search(@Param("id") Integer id,
+    List<Staff> search(@Param("id") Integer id,
                           @Param("name") String name,
                           @Param("minAge") Integer minAge,
                           @Param("maxAge") Integer maxAge,
