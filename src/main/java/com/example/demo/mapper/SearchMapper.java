@@ -18,7 +18,7 @@ public interface SearchMapper {
         @Result(property = "startDate", column = "start_date"),
         @Result(property = "endDate", column = "end_date")
     })
-    List<Search> search(@Param("id") int id,
+    List<Search> search(@Param("id") Integer id,
                           @Param("name") String name,
                           @Param("minAge") Integer minAge,
                           @Param("maxAge") Integer maxAge,
