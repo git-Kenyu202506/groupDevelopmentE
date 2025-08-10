@@ -14,7 +14,7 @@ public class SearchService {
     @Autowired
     private SearchMapper mapper;
 
-    public List<Search> search(int id, String name,
+    public List<Search> search(Integer id, String name,
                                  Integer minAge, Integer maxAge,
                                  LocalDate startL, LocalDate startR,
                                  LocalDate endL, LocalDate endR) {
