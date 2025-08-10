@@ -6,10 +6,79 @@
 	<title>社員情報検索</title>
 	
 	<link rel="stylesheet" th:href="@{/search.css}" />
+	
+	
+	<script>
+	function validateSearchForm() {
+	    const startL = document.getElementById("startL").value;
+	    const startR = document.getElementById("startR").value;
+	    const endL = document.getElementById("endL").value;
+	    const endR = document.getElementById("endR").value;
+
+	    const errors = [];
+
+	    if (startL && startR) {
+	        if (new Date(startL) > new Date(startR)) {
+	            errors.push("開始日の左側は右側以前の日付にしてください。");
+	        }
+	    }
+	    if (endL && endR) {
+	        if (new Date(endL) > new Date(endR)) {
+	            errors.push("終了日の左側は右側以前の日付にしてください。");
+	        }
+	    }
+
+	    if (errors.length > 0) {
+	        alert("入力エラー:\n- " + errors.join("\n- "));
+	        return false;
+	    }
+	    return true;
+	}
+
+	function clearForm() {
+	    document.getElementById("searchForm").reset();
+	}
+	</script>
 </head>
 
 <body>
 	<h1>社員情報検索</h1>
+	
+	<div>
+		<form action="/" method="post" class="">
+			<button type="submit" class="">メニュー</button><!-- メニュー画面へ-->
+		</form>
+		
+		<form action="/" method="post" class="">
+				<button type="submit" class="">登録</button><!-- 登録画面へ-->
+		</form>
+	</div>
+	
+	<div><!-- 検索機能-->
+		<form id="searchForm" th:action="@{/search}" method="post" onsubmit="return validateForm()">
+		    <p>社員ID</p><input type="number" id="id" name="id" th:value="${id}" min="1" step="1"><br>
+		    <p>社員名</p><input type="text" id="name" name="name" th:value="${name}"><br>
+		    <p>年齢</p> 
+			<input type="number" id="minAge" name="minAge" th:value="${minAge}" min="0" step="1">
+			<p>～</p>
+		    <input type="number" id="maxAge" name="maxAge" th:value="${maxAge}" min="0" step="1"><br>
+		    <p>開始日</p>
+			<input type="date" id="startL" name="startL" th:value="${startL}">
+			<p>～</p>
+			<input type="date" id="startR" name="startR" th:value="${startR}">
+			<p>終了日</p>
+			<input type="date" id="endL" name="endL" th:value="${endL}">
+			<p>～</p>
+			<input type="date" id="endR" name="endR" th:value="${endR}">
+			
+			<div>
+				<button type="submit">検索</button>
+				<button type="button" onclick="clearForm()">クリア</button>
+			</div>
+			
+		</form>
+	</div>
+	
 	
 		
 </body>
