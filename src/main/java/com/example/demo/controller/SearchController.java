@@ -43,6 +43,7 @@ public class SearchController {
         model.addAttribute("startR", startR);
         model.addAttribute("endL", endL);
         model.addAttribute("endR", endR);
+        model.addAttribute("count", results.size());//件数追加
 
         return "search";
     }
