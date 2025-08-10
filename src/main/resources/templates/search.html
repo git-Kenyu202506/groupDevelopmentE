@@ -37,7 +37,9 @@
 	}
 
 	function clearForm() {
-	    document.getElementById("searchForm").reset();
+	    document.querySelectorAll("#searchForm input").forEach(el => {
+	        el.value = "";
+	    });
 	}
 	</script>
 </head>
@@ -54,6 +56,7 @@
 				<button type="submit" class="">登録</button><!-- 登録画面へ-->
 		</form>
 	</div>
+	
 	
 	<div><!-- 検索機能-->
 		<form id="searchForm" th:action="@{/search}" method="get" onsubmit="return validateSearchForm()">
@@ -80,38 +83,64 @@
 		</form>
 	</div>
 	
-	<div><!--検索結果表示　兼　削除フォーム-->
-		<form th:action="@{/delete}" method="post" onsubmit="return confirm('選択項目を削除します。よろしいですか？')">
-		    <table border="1">
-		        <thead>
-		            <tr>
-		                <th>選択</th>
-		                <th>ID</th>
-		                <th>名前</th>
-		                <th>年齢</th>
-		                <th>開始日</th>
-		                <th>終了日</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-		            <tr th:each="s : ${search}">
-		                <td><input type="checkbox" name="ids" th:value="${s.id}"></td>
-		                <td th:text="${s.id}"></td>
-		                <td th:text="${s.name}"></td>
-		                <td th:text="${s.age}"></td>
-		                <td th:text="${s.startDate}"></td>
-		                <td th:text="${s.endDate}"></td>
-		            </tr>
-		            <tr th:if="${#lists.isEmpty(search)}">
-		                <td colspan="6">該当データはありません。</td>
-		            </tr>
-		        </tbody>
-		    </table>
-		    <div>
-		        <button type="submit">選択削除</button>
-		    </div>
-		</form>
+	<div>
+	    <!-- 件数表示 -->
+	    <p th:text="${count} + ' 件'"></p>
 	</div>
+	
+	<!-- 検索結果表示 兼 削除フォーム -->
+	<form th:if="${not #lists.isEmpty(search)}"
+	      th:action="@{/delete}" method="post"
+	      onsubmit="return confirm('選択項目を削除します。よろしいですか？')">
+	    <table border="1">
+	        <thead>
+	            <tr>
+	                <th>選択</th>
+	                <th>ID</th>
+	                <th>名前</th>
+	                <th>年齢</th>
+	                <th>開始日</th>
+	                <th>終了日</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr th:each="s : ${search}">
+	                <td><input type="checkbox" name="ids" th:value="${s.id}" class="row-check"></td>
+	                <td th:text="${s.id}"></td>
+	                <td th:text="${s.name}"></td>
+	                <td th:text="${s.age}"></td>
+	                <td th:text="${s.startDate}"></td>
+	                <td th:text="${s.endDate}"></td>
+	            </tr>
+	        </tbody>
+	    </table>
+		
+	    <div>
+	        <button type="submit" id="deleteBtn" disabled>選択削除</button>
+	    </div>
+		
+	</form>
+
+	<!-- 該当なし -->
+	<div th:if="${#lists.isEmpty(search)}">
+	    <p>該当データはありません。</p>
+	</div>
+
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	    const checkboxes = document.querySelectorAll(".row-check");
+	    const deleteBtn = document.getElementById("deleteBtn");
+
+	    function toggleDeleteBtn() {
+	        const checked = document.querySelectorAll(".row-check:checked").length > 0;
+	        deleteBtn.disabled = !checked;
+	    }
+
+	    checkboxes.forEach(cb => {
+	        cb.addEventListener("change", toggleDeleteBtn);
+	    });
+	});
+	</script>
 	
 	
 		
