@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.springframework.core.annotation.MergedAnnotations.Search;
 
@@ -13,8 +14,10 @@ import org.springframework.core.annotation.MergedAnnotations.Search;
 public interface SearchMapper {
 	//社員情報検索
     @SelectProvider(type=SearchSqlProvider.class, method="buildSearchSql")
-    @Result(property = "startDate", column = "start_date")// マッピングする！
-    @Result(property = "endDate", column = "end_date")// マッピングする！
+    @Results({
+        @Result(property = "startDate", column = "start_date"),
+        @Result(property = "endDate", column = "end_date")
+    })
     List<Search> search(@Param("id") int id,
                           @Param("name") String name,
                           @Param("minAge") Integer minAge,
