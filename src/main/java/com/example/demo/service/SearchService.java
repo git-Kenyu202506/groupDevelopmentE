@@ -26,8 +26,8 @@ public class SearchService {
         return mapper.search(id, name, minAge, maxAge, sL, sR, eL, eR);
     }
 
-//    public void deleteByIds(List<Long> ids) {
-//        if (ids != null && !ids.isEmpty()) mapper.deleteByIds(ids);
-//    }
+    public void deleteByIds(List<Long> ids) {
+        if (ids != null && !ids.isEmpty()) mapper.deleteByIds(ids);
+    }
 }
 
