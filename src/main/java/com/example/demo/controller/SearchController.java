@@ -21,7 +21,7 @@ public class SearchController {
 	private SearchService service;//サービスクラスをもってきてる
 	@GetMapping("/search")
     public String search(
-        @RequestParam(required=false) int id,
+        @RequestParam(required=false) Integer id,
         @RequestParam(required=false) String name,
         @RequestParam(required=false) Integer minAge,
         @RequestParam(required=false) Integer maxAge,
