@@ -8,7 +8,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Staff;
@@ -46,12 +45,6 @@ public class SearchController {
         model.addAttribute("count", results.size());//件数追加
 
         return "search";
-    }
-	
-	@PostMapping("/delete")
-    public String delete(@RequestParam(name="ids", required=false) List<Long> ids) {
-        service.deleteByIds(ids);
-        return "redirect:/search";
     }
 	
 }
