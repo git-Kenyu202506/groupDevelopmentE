@@ -1,5 +1,108 @@
 @charset "UTF-8";
 
+/*
+
+全体
+
+*/
 body{
 	background-color: rgb(245, 245, 245);
+	width: 90%;
+	margin: auto;
 }
+
+/*
+
+タイトル
+
+*/
+.header{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 0.2em black solid;
+}
+
+.header h2{
+	color: red;
+}
+
+/*
+
+メニューボタンと登録ボタン
+
+*/
+
+/*form全体*/
+.menu-update-button{
+	display: flex;
+	margin-top: 1em;
+}
+
+.menu-update-button form{
+	width: 5em;
+	height: 2em;
+}
+
+/*メニューボタン*/
+.menu-botton{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	border: 0.1em black solid;
+	cursor: pointer;
+}
+
+.menu-botton:hover{
+	background-color: rgb(226, 226, 226);
+}
+
+/*登録ボタン*/
+.update-button{
+	width: 100%;
+	height: 100%;
+	background-color: rgb(245, 222, 179);
+	border: 0.1em black solid;
+	cursor: pointer;
+	margin-left: 1em;
+}
+
+.update-button:hover{
+	background-color: rgb(237, 198, 124);
+}
+
+
+/*
+
+検索機能(入力フォーム)
+
+*/
+
+/*入力フォーム全体*/
+.search-container{
+	display: flex;
+	margin-top: 1em;
+}
+
+.search-container-flex{
+	display: flex;
+	margin: auto;
+	align-items: center
+}
+
+input{
+	margin: 0 1em;
+	width: 10em;
+	height: 3em;
+	border: 0.1em black solid;
+	text-align: center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	width: 1.5em;
+	height: 1.5em;
+}
+	
+
+
+
