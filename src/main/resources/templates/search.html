@@ -150,7 +150,9 @@
 		        <tbody>
 		        	<tr th:each="s : ${search}">
 		                <td style="width: 3em;"><input type="checkbox" name="id" th:value="${s.id}" class="row-check"></td>
-		                <td th:text="${s.id}"></td>
+						<td>
+						    <a th:href="@{/update.html(id=${s.id})}" th:text="${s.id}"></a>
+						</td>
 		                <td th:text="${s.name}"></td>
 		                <td th:text="${s.age}"></td>
 		                <td th:text="${s.startDate}"></td>
