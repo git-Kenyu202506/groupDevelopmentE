@@ -154,7 +154,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /*
 
-検索結果表示 兼 削除フォーム
+検索結果表示
 
 */
 .showForm{
@@ -186,8 +186,22 @@ th{
 
 /*チェックボックス*/
 .row-check{
-/*	padding-left: 0;*/
-	text-align: center;
-/*	上書きしてpadding-leftを消してる*/
+	cursor: pointer;
+}
+
+
+/*
+
+削除ボタン
+
+*/
+
+#deleteBtn{
+	width: 10em;
+	height: 4em;
+	background-color: rgb(213, 255, 255);
+	border: 0.1em black solid;
+	cursor: pointer;
+	font-weight: bold;
 }
 
