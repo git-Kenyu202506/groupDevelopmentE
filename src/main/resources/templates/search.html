@@ -66,7 +66,7 @@
 	</div>
 	
 	<!-- 検索機能-->
-	<form id="searchForm" th:action="@{/search}" method="get" onsubmit="return validateSearchForm()">
+	<form class="searchForm" th:action="@{/search}" method="get" onsubmit="return validateSearchForm()">
 		<div class="search-container">
 			
 			<div>
@@ -126,41 +126,40 @@
 			
 	</form>
 	
-	
-	
-	
-	<div>
-	    <!-- 件数表示 -->
+	<!-- 件数表示 -->
+	<div class="count">
 	    <p th:text="${count} + ' 件'"></p>
 	</div>
 	
 	<!-- 検索結果表示 兼 削除フォーム -->
-	<form th:if="${not #lists.isEmpty(search)}"
+	<form class="showForm" th:if="${not #lists.isEmpty(search)}"
 	      th:action="@{/delete}" method="post"
 	      onsubmit="return confirm('選択項目を削除します。よろしいですか？')">
-	    <table border="1">
-	        <thead>
-	            <tr>
-	                <th>選択</th>
-	                <th>ID</th>
-	                <th>名前</th>
-	                <th>年齢</th>
-	                <th>開始日</th>
-	                <th>終了日</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <tr th:each="s : ${search}">
-	                <td><input type="checkbox" name="ids" th:value="${s.id}" class="row-check"></td>
-	                <td th:text="${s.id}"></td>
-	                <td th:text="${s.name}"></td>
-	                <td th:text="${s.age}"></td>
-	                <td th:text="${s.startDate}"></td>
-	                <td th:text="${s.endDate}"></td>
-	            </tr>
-	        </tbody>
-	    </table>
-		
+		 <div class="showForm-table">
+		 	<table style="table-layout: fixed; width: 100%;">
+		    	<thead>
+		        	<tr>
+		            	<th style="width: 3em;">選択</th>
+		                <th>ID</th>
+		                <th>名前</th>
+		                <th>年齢</th>
+		                <th>開始日</th>
+		                <th>終了日</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<tr th:each="s : ${search}">
+		                <td style="width: 3em;" class="row-check"><input type="checkbox" name="ids" th:value="${s.id}"></td>
+		                <td th:text="${s.id}"></td>
+		                <td th:text="${s.name}"></td>
+		                <td th:text="${s.age}"></td>
+		                <td th:text="${s.startDate}"></td>
+		                <td th:text="${s.endDate}"></td>
+		            </tr>
+		        </tbody>
+		    </table>
+		 </div>
+			
 	    <div>
 	        <button type="submit" id="deleteBtn" disabled>選択削除</button>
 	    </div>
