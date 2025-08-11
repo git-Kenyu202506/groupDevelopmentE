@@ -76,10 +76,11 @@ body{
 */
 
 /*入力フォーム全体*/
-#searchForm{
+.searchForm{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	margin: 1em auto;
 }
 
 .search-container{
@@ -94,7 +95,7 @@ body{
 }
 
 /*inputタグ（入力部分）*/
-input{
+.searchForm input{
 	margin: 0 2em;
 	width: 10em;
 	height: 3em;
@@ -136,4 +137,57 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	background-color: rgb(226, 226, 226);
 }
 
+
+/*
+
+件数表示
+
+*/
+.count{
+	border-top: 0.2em black solid;
+}
+
+.count p{
+	font-weight: bold;
+}
+
+
+/*
+
+検索結果表示 兼 削除フォーム
+
+*/
+.showForm{
+	display: flex;
+	justify-content: space-around;
+	align-items: top;
+	margin: 1em auto;
+}
+
+.showForm-table{
+	width: 70%;
+}
+
+table{
+	width: 100%;
+	margin: auto;
+	border-collapse: collapse;
+	background-color: white;
+}
+th , td{
+	height: 2em;
+	text-align: center;
+	text-align: center;
+	border: solid 0.1em rgb(158, 158, 158);
+}
+th{
+	background-color: rgb(255, 255, 128);
+}
+
+/*チェックボックス*/
+.row-check{
+/*	padding-left: 0;*/
+	text-align: center;
+/*	上書きしてpadding-leftを消してる*/
+}
 
