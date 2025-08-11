@@ -131,10 +131,10 @@
 	    <p th:text="${count} + ' 件'"></p>
 	</div>
 	
-	<!-- 検索結果表示 兼 削除フォーム -->
+	<!-- 検索結果表示 -->
 	<form class="showForm" th:if="${not #lists.isEmpty(search)}"
 	      th:action="@{/delete}" method="post"
-	      onsubmit="return confirm('選択項目を削除します。よろしいですか？')">
+	      onsubmit="return confirm('削除画面に遷移します')">
 		 <div class="showForm-table">
 		 	<table style="table-layout: fixed; width: 100%;">
 		    	<thead>
@@ -149,7 +149,7 @@
 		        </thead>
 		        <tbody>
 		        	<tr th:each="s : ${search}">
-		                <td style="width: 3em;" class="row-check"><input type="checkbox" name="ids" th:value="${s.id}"></td>
+		                <td style="width: 3em;"><input type="checkbox" name="ids" th:value="${s.id}" class="row-check"></td>
 		                <td th:text="${s.id}"></td>
 		                <td th:text="${s.name}"></td>
 		                <td th:text="${s.age}"></td>
@@ -161,7 +161,7 @@
 		 </div>
 			
 	    <div>
-	        <button type="submit" id="deleteBtn" disabled>選択削除</button>
+	        <button type="submit" id="deleteBtn" disabled>削除</button><!--削除画面へ-->
 	    </div>
 		
 	</form>
