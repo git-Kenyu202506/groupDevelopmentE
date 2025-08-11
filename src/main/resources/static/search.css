@@ -39,8 +39,8 @@ body{
 }
 
 .menu-update-button form{
-	width: 5em;
-	height: 2em;
+	width: 6em;
+	height: 3em;
 }
 
 /*メニューボタン*/
@@ -51,7 +51,6 @@ body{
 	border: 0.1em black solid;
 	cursor: pointer;
 }
-
 .menu-botton:hover{
 	background-color: rgb(226, 226, 226);
 }
@@ -65,7 +64,6 @@ body{
 	cursor: pointer;
 	margin-left: 1em;
 }
-
 .update-button:hover{
 	background-color: rgb(237, 198, 124);
 }
@@ -78,6 +76,12 @@ body{
 */
 
 /*入力フォーム全体*/
+#searchForm{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .search-container{
 	display: flex;
 	margin-top: 1em;
@@ -89,8 +93,9 @@ body{
 	align-items: center
 }
 
+/*inputタグ（入力部分）*/
 input{
-	margin: 0 1em;
+	margin: 0 2em;
 	width: 10em;
 	height: 3em;
 	border: 0.1em black solid;
@@ -102,7 +107,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	width: 1.5em;
 	height: 1.5em;
 }
-	
 
+/*検索とクリアボタン*/
+.submit-clear-button button{
+	display: block;
+	width: 10em;
+	height: 4em;
+}
+
+/*検索ボタン*/
+.submit-button{
+	background-color: rgb(255, 255, 128);
+	border: 0.1em black solid;
+	cursor: pointer;
+}
+.submit-button:hover{
+	background-color: rgb(236, 236, 0);
+}
+
+/*クリアボタン*/
+.clear-button{
+	background-color: white;
+	border: 0.1em black solid;
+	cursor: pointer;
+	margin-top: 1em;
+}
+.clear-button:hover{
+	background-color: rgb(226, 226, 226);
+}
 
 
