@@ -133,8 +133,8 @@
 	
 	<!-- 検索結果表示 -->
 	<form class="showForm" th:if="${not #lists.isEmpty(search)}"
-	      th:action="@{/delete}" method="post"
-	      onsubmit="return confirm('削除画面に遷移します')">
+	      th:action="@{/delete.html}" method="get"
+	      onsubmit="return confirm('削除画面に遷移します')"><!--ローカルのdelete.htmlにidを渡している-->
 		 <div class="showForm-table">
 		 	<table style="table-layout: fixed; width: 100%;">
 		    	<thead>
@@ -149,7 +149,7 @@
 		        </thead>
 		        <tbody>
 		        	<tr th:each="s : ${search}">
-		                <td style="width: 3em;"><input type="checkbox" name="ids" th:value="${s.id}" class="row-check"></td>
+		                <td style="width: 3em;"><input type="checkbox" name="id" th:value="${s.id}" class="row-check"></td>
 		                <td th:text="${s.id}"></td>
 		                <td th:text="${s.name}"></td>
 		                <td th:text="${s.age}"></td>
