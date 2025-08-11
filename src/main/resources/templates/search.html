@@ -45,43 +45,89 @@
 </head>
 
 <body>
-	<h1>社員情報検索</h1>
-	
-	<div>
+	<!--タイトル-->
+	<div class="header">
+		<h2>社員情報検索</h2>
+		<div>
+			<p>ログイン人物名<br>ログイン時間</p>
+		</div>
+	</div>
+		
+	<!--メニューボタンと登録ボタン-->
+	<div class="menu-update-button">
+		
 		<form action="/" method="post" class="">
-			<button type="submit" class="">メニュー</button><!-- メニュー画面へ-->
+			<button type="submit" class="menu-botton">メニュー</button><!-- メニュー画面へ-->
 		</form>
 		
 		<form action="/" method="post" class="">
-				<button type="submit" class="">登録</button><!-- 登録画面へ-->
+				<button type="submit" class="update-button">登録</button><!-- 登録画面へ-->
 		</form>
 	</div>
 	
+	<!-- 検索機能-->
 	
-	<div><!-- 検索機能-->
-		<form id="searchForm" th:action="@{/search}" method="get" onsubmit="return validateSearchForm()">
-		    <p>社員ID</p><input type="number" id="id" name="id" th:value="${id}" min="1" step="1"><br>
-		    <p>社員名</p><input type="text" id="name" name="name" th:value="${name}"><br>
-		    <p>年齢</p> 
-			<input type="number" id="minAge" name="minAge" th:value="${minAge}" min="0" step="1">
-			<p>～</p>
-		    <input type="number" id="maxAge" name="maxAge" th:value="${maxAge}" min="0" step="1"><br>
-		    <p>開始日</p>
-			<input type="date" id="startL" name="startL" th:value="${startL}">
-			<p>～</p>
-			<input type="date" id="startR" name="startR" th:value="${startR}">
-			<p>終了日</p>
-			<input type="date" id="endL" name="endL" th:value="${endL}">
-			<p>～</p>
-			<input type="date" id="endR" name="endR" th:value="${endR}">
+	<form id="searchForm" th:action="@{/search}" method="get" onsubmit="return validateSearchForm()">
+		<div class="search-container">
 			
 			<div>
-				<button type="submit">検索</button>
-				<button type="button" onclick="clearForm()">クリア</button>
+				<div class="search-container-flex">
+				    <p>社員ID</p>
+					<input type="number" id="id" name="id" th:value="${id}" min="1" step="1"><br>
+				</div>
+					
+				<div class="search-container-flex">
+				    <p>社員名</p>
+					<input type="text" id="name" name="name" th:value="${name}"><br>
+				</div>
+			</div>
+				
+			<div>
+				<div class="search-container-flex">
+					<div class="search-container-flex">
+						<p>年齢　</p> 
+						<input type="number" id="minAge" name="minAge" th:value="${minAge}" min="0" step="1">
+					</div>
+					<div class="search-container-flex">
+						<p>～</p>
+						<input type="number" id="maxAge" name="maxAge" th:value="${maxAge}" min="0" step="1">
+					</div>
+				</div>	
+					
+				<div class="search-container-flex">
+					<div class="search-container-flex">
+						<p>開始日</p>
+						<input type="date" id="startL" name="startL" th:value="${startL}">
+					</div>
+					<div class="search-container-flex">
+						<p>～</p>
+						<input type="date" id="startR" name="startR" th:value="${startR}">
+					</div>
+				</div>	
+					
+				<div class="search-container-flex">
+					<div class="search-container-flex">
+						<p>終了日</p>
+						<input type="date" id="endL" name="endL" th:value="${endL}">
+					</div>
+					<div class="search-container-flex">
+						<p>～</p>
+						<input type="date" id="endR" name="endR" th:value="${endR}">
+					</div>
+				</div>	
 			</div>
 			
-		</form>
-	</div>
+		</div>
+			
+		<div>
+			<button type="submit">検索</button>
+			<button type="button" onclick="clearForm()">クリア</button>
+		</div>
+			
+	</form>
+	
+	
+	
 	
 	<div>
 	    <!-- 件数表示 -->
