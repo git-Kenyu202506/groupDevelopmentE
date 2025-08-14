@@ -14,9 +14,17 @@
 	    const startR = document.getElementById("startR").value;
 	    const endL = document.getElementById("endL").value;
 	    const endR = document.getElementById("endR").value;
+		const minAge = document.getElementById("minAge").value;
+		const maxAge = document.getElementById("maxAge").value;
 
 		// ユーザに分かりやすくエラーを集約
 	    const errors = [];
+		
+		if (minAge && maxAge) {
+		    if (Number(minAge) > Number(maxAge)) {
+		       	errors.push("左側の年齢は右側の年齢を上回らないでください。");
+		    }
+		}
 
 	    if (startL && startR) {
 	        if (new Date(startL) > new Date(startR)) {
@@ -56,11 +64,11 @@
 	<!--メニューボタンと登録ボタン-->
 	<div class="menu-update-button">
 		
-		<form action="/" method="post" class="">
+		<form th:action="@{/menu.html}" class="">
 			<button type="submit" class="menu-botton">メニュー</button><!-- メニュー画面へ-->
 		</form>
 		
-		<form action="/" method="post" class="">
+		<form th:action="@{/registration.html}" class="">
 				<button type="submit" class="update-button">登録</button><!-- 登録画面へ-->
 		</form>
 	</div>
