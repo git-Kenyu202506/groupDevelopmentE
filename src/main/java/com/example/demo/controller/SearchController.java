@@ -30,6 +30,43 @@ public class SearchController {
         @RequestParam(required=false) @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate endL,
         @RequestParam(required=false) @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate endR,
         Model model) {
+		
+		// サーバー側のバリデーション
+	    StringBuilder errorMessages = new StringBuilder();
+
+	    // 年齢チェック
+	    if (minAge != null && maxAge != null && minAge > maxAge) {
+	        errorMessages.append("左側の年齢は右側の年齢を上回らないでください。\n");
+	    }
+
+	    // 開始日チェック
+	    if (startL != null && startR != null && startL.isAfter(startR)) {
+	        errorMessages.append("開始日の左側は右側以前の日付にしてください。\n");
+	    }
+
+	    // 終了日チェック
+	    if (endL != null && endR != null && endL.isAfter(endR)) {
+	        errorMessages.append("終了日の左側は右側以前の日付にしてください。\n");
+	    }
+
+	    if (errorMessages.length() > 0) {
+	        // エラー時の処理
+	        model.addAttribute("error", errorMessages.toString());
+	        model.addAttribute("search", List.of()); // 検索結果は空
+	        model.addAttribute("count", 0);
+
+	        // 入力値を戻す（画面再表示時に保持）
+	        model.addAttribute("id", id);
+	        model.addAttribute("name", name);
+	        model.addAttribute("minAge", minAge);
+	        model.addAttribute("maxAge", maxAge);
+	        model.addAttribute("startL", startL);
+	        model.addAttribute("startR", startR);
+	        model.addAttribute("endL", endL);
+	        model.addAttribute("endR", endR);
+
+	        return "search"; // エラーありでそのまま画面再表示
+	    }
 
         List<Staff> results = service.search(id, name, minAge, maxAge, startL, startR, endL, endR);
 
