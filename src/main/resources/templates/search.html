@@ -180,6 +180,11 @@
 	<div th:if="${#lists.isEmpty(search)}">
 	    <p>該当データはありません。</p>
 	</div>
+	
+	<!-- サーバー側でエラーがあった場合 -->
+	<div th:if="${error}" style="color:red; white-space:pre-line;">
+	    <p th:text="${error}"></p>
+	</div>
 
 	<script>
 	document.addEventListener("DOMContentLoaded", function() {
